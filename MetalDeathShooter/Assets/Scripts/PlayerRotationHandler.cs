@@ -13,7 +13,6 @@ public class PlayerRotationHandler : MonoBehaviour
     void Update()
     {
         float angle = Mathf.Acos(rb.velocity.normalized.y) * Mathf.Rad2Deg;
-        Debug.Log(angle);
         if (rb.velocity.normalized.x > 0f) angle *= -1;
         transform.localRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
     }

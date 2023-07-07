@@ -35,7 +35,7 @@ public class PathBehavior : MonoBehaviour
 
     //event that will be emitted when the path is confirmed
 
-    public Action OnPathConfirmed;
+    public Action onPathConfirmed;
 
 
     //used to prevent holding keys from being uncontrollable
@@ -77,7 +77,7 @@ public class PathBehavior : MonoBehaviour
                 // set the end of the path to a regular path tile to indicate it can no longer be moved
                 map.SetTile(curPos, pathTile);
                 confirmed = true;
-                OnPathConfirmed();
+                onPathConfirmed();
             }
             else
             {

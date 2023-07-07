@@ -25,7 +25,10 @@ public class PathFollow : MonoBehaviour
     void Start()
     {
         // load path data from the pathmanager script
-         p = path.worldPath;
+        path = GameObject.FindWithTag("PathManager").GetComponent<PathBehavior>();
+        p = path.worldPath;
+
+       
     }
 
     // Update is called once per frame

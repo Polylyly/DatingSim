@@ -53,6 +53,7 @@ public class PathBehavior : MonoBehaviour
     void Update()
     {
         holdTimer -= Time.deltaTime;
+        if (Input.anyKeyDown) holdTimer = 0f; //no hold delay if we're tapping
         // yes this is a bad way to do this but i dont care that much
         if (!confirmed)
         {

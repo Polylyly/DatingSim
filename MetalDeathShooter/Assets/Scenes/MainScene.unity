@@ -3301,7 +3301,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 1361243939}
   rb: {fileID: 2135240445}
-  speed: 0.4
+  speed: 180
   nextWaypointDistance: 0.3
 --- !u!4 &2135240447
 Transform:

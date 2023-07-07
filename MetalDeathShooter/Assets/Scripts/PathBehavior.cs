@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -31,6 +32,10 @@ public class PathBehavior : MonoBehaviour
 
     //boolean variable that stores whether the path has been confirmed (uneditable)
     bool confirmed = false;
+
+    //event that will be emitted when the path is confirmed
+
+    public Action OnPathConfirmed;
 
 
     //used to prevent holding keys from being uncontrollable
@@ -69,16 +74,14 @@ public class PathBehavior : MonoBehaviour
                 // if the path has not reached the end pos, do not confirm it
                 if (curPos != endPos) return;
                 // set the end of the path to a regular path tile to indicate it can no longer be moved
-                map.SetTile(curPos, pathTile); 
+                map.SetTile(curPos, pathTile);
+                confirmed = true;
+                OnPathConfirmed();
             }
             else
             {
-                // reset the path when it is unconfirmed
-                map.FloodFill(startPos, normalTile);
-                curPos = startPos;
-                map.SetTile(startPos, curTile);
+                ResetPath();
             }
-            confirmed = !confirmed;
         }
     }
 
@@ -118,5 +121,13 @@ public class PathBehavior : MonoBehaviour
         curPos += amount;
         // add in a new tile for the very end of the tile
         map.SetTile(curPos, curTile);
+    }
+
+    public void ResetPath()
+    {
+        map.FloodFill(startPos, normalTile);
+        curPos = startPos;
+        map.SetTile(startPos, curTile);
+        confirmed = false;
     }
 }

@@ -41,6 +41,7 @@ public class PathFollow : MonoBehaviour
         if (started)
         {
             //check if the path is completed
+            //if so, don't run the pathing code beneath this
             if (currentWaypoint == p.Count - 1)
             {
                 pathCompleted = true;
@@ -50,10 +51,10 @@ public class PathFollow : MonoBehaviour
             {
                 pathCompleted = false;
             }
-            //find the direction to move in
+            //find the direction to move in using some gross vector math
             Vector2 direction = ((Vector2)p[currentWaypoint + 1] - rb.position).normalized;
             //apply a force in that direction
-            rb.AddForce(speed * direction);
+            rb.AddForce(speed * direction * Time.deltaTime);
 
             //check if we've reached the next waypoint
             if (Vector2.Distance(rb.position, (Vector2)p[currentWaypoint + 1]) < nextWaypointDistance)

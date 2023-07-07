@@ -16,6 +16,8 @@ public class PathBehavior : MonoBehaviour
 
     //where the path starts
     public Vector3Int startPos;
+    //where the path must end
+    public Vector3Int endPos;
     // the boundaries of the path
     public Vector2Int topLeftBound;
     public Vector2Int bottomRightBound;
@@ -27,6 +29,14 @@ public class PathBehavior : MonoBehaviour
     //the data structure that will store the path on a world basis
     public List<Vector3> worldPath = new List<Vector3>();
 
+    //boolean variable that stores whether the path has been confirmed (uneditable)
+    bool confirmed = false;
+
+
+    //used to prevent holding keys from being uncontrollable
+    private float holdTime = 0.2f;
+    private float holdTimer;
+
     void Start()
     {
         // set things up
@@ -37,22 +47,38 @@ public class PathBehavior : MonoBehaviour
 
     void Update()
     {
+        holdTimer -= Time.deltaTime;
         // yes this is a bad way to do this but i dont care that much
-        if (Input.GetKeyDown("w"))
+        if (!confirmed)
         {
-            moveCurTile(new Vector3Int(0, 1, 0));
+            if (Input.GetAxisRaw("Horizontal") != 0 && holdTimer <= 0f)
+            {
+                moveCurTile(new Vector3Int((int)Input.GetAxisRaw("Horizontal"), 0, 0));
+                holdTimer = holdTime;
+            }
+            if (Input.GetAxisRaw("Vertical") != 0 && holdTimer <= 0f)
+            {
+                moveCurTile(new Vector3Int(0, (int) Input.GetAxisRaw("Vertical"), 0));
+                holdTimer = holdTime;
+            }
         }
-        if (Input.GetKeyDown("a"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            moveCurTile(new Vector3Int(-1, 0, 0));
-        }
-        if (Input.GetKeyDown("s"))
-        {
-            moveCurTile(new Vector3Int(0, -1, 0));
-        }
-        if (Input.GetKeyDown("d"))
-        {
-            moveCurTile(new Vector3Int(1, 0, 0));
+            if (!confirmed)
+            {
+                // if the path has not reached the end pos, do not confirm it
+                if (curPos != endPos) return;
+                // set the end of the path to a regular path tile to indicate it can no longer be moved
+                map.SetTile(curPos, pathTile); 
+            }
+            else
+            {
+                // reset the path when it is unconfirmed
+                map.FloodFill(startPos, normalTile);
+                curPos = startPos;
+                map.SetTile(startPos, curTile);
+            }
+            confirmed = !confirmed;
         }
     }
 

@@ -3573,9 +3573,29 @@ Tilemap:
     m_Data: {fileID: 11400000, guid: 9d8ef12aadae7494aae54e110eefda27, type: 2}
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 1a0612eb86847b645971d09f1f3f415b, type: 2}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   m_TileSpriteArray:
   - m_RefCount: 264
     m_Data: {fileID: 7482667652216324306, guid: 1192c060095e74843bda19181948e2f7, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileMatrixArray:
@@ -3601,9 +3621,9 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: 5.5954e-41, g: 5.5954e-41, b: 5.5954e-41, a: 5.5954e-41}
   - m_RefCount: 263
-    m_Data: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 0.16470589}
+    m_Data: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 0}
   - m_RefCount: 0
-    m_Data: {r: 5.5954e-41, g: 5.5954e-41, b: 5.5954e-41, a: 5.5954e-41}
+    m_Data: {r: NaN, g: NaN, b: NaN, a: NaN}
   - m_RefCount: 1
     m_Data: {r: 0.7789757, g: 0.94754463, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
@@ -3660,8 +3680,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   map: {fileID: 1305762655}
-  curTile: {fileID: 11400000, guid: 1a0612eb86847b645971d09f1f3f415b, type: 2}
-  pathTile: {fileID: 11400000, guid: da3543ee64cf6a64eb42afc9721e9ced, type: 2}
+  curTileUp: {fileID: 11400000, guid: b3cb33e044dfecc4e935e97b2dfd8edb, type: 2}
+  curTileDown: {fileID: 11400000, guid: 6aa369369b4b218499e23c58e085033f, type: 2}
+  curTileLeft: {fileID: 11400000, guid: 5f96b93122d78d049a6f5752df6d2258, type: 2}
+  curTileRight: {fileID: 11400000, guid: d1afa8023f6d1cb4fbb3aaf069ceab6d, type: 2}
+  pathTileHor: {fileID: 11400000, guid: b281f49be4b091d4c8360fb5c7b29bbb, type: 2}
+  pathTileVer: {fileID: 11400000, guid: 46153a48e82978747b679a7f666118c3, type: 2}
+  cornerTileLeftDown: {fileID: 11400000, guid: 029a7e7d904adf24e85b7293e1af847f, type: 2}
+  cornerTileLeftUp: {fileID: 11400000, guid: 85af5e09808b2dc46ab7e39e68223290, type: 2}
+  cornerTileRightDown: {fileID: 11400000, guid: 90c0a8e0cb216ba449538319d308385f, type: 2}
+  cornerTileRightUp: {fileID: 11400000, guid: ae3c3f999ad9c464c94b0ab17d450079, type: 2}
   normalTile: {fileID: 11400000, guid: 9d8ef12aadae7494aae54e110eefda27, type: 2}
   startPos: {x: -10, y: 0, z: 0}
   endPos: {x: 9, y: 0, z: 0}
@@ -3710,7 +3738,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1472389093}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.91, y: -0.15, z: 0}
   m_LocalScale: {x: 5.1999536, y: 5.1999536, z: 5.1999536}
   m_ConstrainProportionsScale: 0
   m_Children: []

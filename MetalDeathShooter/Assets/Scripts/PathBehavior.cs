@@ -8,10 +8,19 @@ public class PathBehavior : MonoBehaviour
 {
     // ref to the tilemap
     public Tilemap map;
-    // the tile that will be used for the very end of the path
-    public Tile curTile;
-    // the tile used for the trailing parts of the path
-    public Tile pathTile;
+    // the tiles that will be used for the very end of the path
+    public Tile curTileUp;
+    public Tile curTileDown;
+    public Tile curTileLeft;
+    public Tile curTileRight;
+    // the tiles used for the trailing parts of the path
+    public Tile pathTileHor;
+    public Tile pathTileVer;
+    public Tile cornerTileLeftDown;
+    public Tile cornerTileLeftUp;
+    public Tile cornerTileRightDown;
+    public Tile cornerTileRightUp;
+
     // the tile we replace path tiles with when removing them
     public Tile normalTile;
 
@@ -45,8 +54,7 @@ public class PathBehavior : MonoBehaviour
     void Start()
     {
         // set things up
-        curPos = startPos;
-        map.SetTile(startPos, curTile);
+        ResetPath();
     }
 
 
@@ -75,7 +83,7 @@ public class PathBehavior : MonoBehaviour
                 // if the path has not reached the end pos, do not confirm it
                 if (curPos != endPos) return;
                 // set the end of the path to a regular path tile to indicate it can no longer be moved
-                map.SetTile(curPos, pathTile);
+                map.SetTile(curPos, FindTile(new Vector3Int(1, 0, 0)));
                 confirmed = true;
                 onPathConfirmed();
             }
@@ -94,6 +102,16 @@ public class PathBehavior : MonoBehaviour
         // if so, we can erase the path
         if(tilePath.Count >= 1 && tilePath[tilePath.Count - 1] == curPos + amount)
         {
+            Vector3Int prevTile;
+            if (tilePath.Count < 2)
+            {
+                prevTile = startPos + new Vector3Int(-1, 0, 0);
+            }
+            else
+            {
+                prevTile = tilePath[tilePath.Count - 2];
+            }
+            Vector3Int amounty = tilePath[tilePath.Count - 1] - prevTile;
             // remove the last item from the list of tile pos
             tilePath.RemoveAt(tilePath.Count - 1);
             // remove the last item from the list of world pos
@@ -103,32 +121,118 @@ public class PathBehavior : MonoBehaviour
             // move the very end of the path
             curPos += amount;
             // set the new very end of the path to the end of path tile
-            map.SetTile(curPos, curTile);
+            map.SetTile(curPos, FindCurTile(amounty));
             return;
         }
         // make sure you can't path over your own path
-        if (map.GetTile(curPos + amount).Equals(pathTile)) return;
+        if (!map.GetTile(curPos + amount).Equals(normalTile)) return;
         // check that you cant path outside the bounds
         if ((curPos + amount).x < topLeftBound.x || (curPos + amount).x > bottomRightBound.x || (curPos + amount).y > topLeftBound.y || (curPos + amount).y < bottomRightBound.y) return;
         
         //now the code to just regularly move the tile
 
         //set the current end of the path to a trailing path tile
-        map.SetTile(curPos, pathTile);
+        map.SetTile(curPos, FindTile(amount));
         // add the current end of the path to both lists
         tilePath.Add(curPos);
         worldPath.Add(map.GetCellCenterWorld(curPos)); //getcellcenterworld is used to get a world position
         // move the current position
         curPos += amount;
         // add in a new tile for the very end of the tile
-        map.SetTile(curPos, curTile);
+        map.SetTile(curPos, FindCurTile(amount));
     }
 
+    //returns the tile that, when placed at curPos, will properly adjoin the most recently placed tile to curpos+the given vector3Int
+    public Tile FindTile(Vector3Int toNextTile)
+    {
+        Vector3Int nextTile = curPos + toNextTile;
+        Vector3Int prevTile;
+        if (tilePath.Count == 0)
+        {
+            prevTile = startPos + new Vector3Int(-1, 0, 0);
+        }
+        else
+        {
+            prevTile = tilePath[tilePath.Count - 1];
+        }
+        // check for straightaways
+        if (prevTile.x == nextTile.x)
+        {
+            return pathTileVer;
+        }
+        if (prevTile.y == nextTile.y)
+        {
+            return pathTileHor;
+        }
+        // check for corners
+        if(curPos.x > prevTile.x)
+        {
+            if(nextTile.y > curPos.y)
+            {
+                return cornerTileLeftUp;
+            }
+            else
+            {
+                return cornerTileLeftDown;
+            }
+        }else if(curPos.x < prevTile.x)
+        {
+            if (nextTile.y > curPos.y)
+            {
+                return cornerTileRightUp;
+            }
+            else
+            {
+                return cornerTileRightDown;
+            }
+        }
+        else if(curPos.y > prevTile.y)
+        {
+            if (nextTile.x > curPos.x)
+            {
+                return cornerTileRightDown;
+            }
+            else
+            {
+                return cornerTileLeftDown;
+            }
+        }
+        else
+        {
+            if (nextTile.x > curPos.x)
+            {
+                return cornerTileRightUp;
+            }
+            else
+            {
+                return cornerTileLeftUp;
+            }
+        }
+    }
+
+    // based on the amount moved, gives a current tile to use
+    private Tile FindCurTile(Vector3Int amount)
+    {
+        if(amount.x == 1)
+        {
+            return curTileRight;
+        }else if(amount.x == -1)
+        {
+            return curTileLeft;
+        }else if(amount.y == 1)
+        {
+            return curTileUp;
+        }
+        else
+        {
+            return curTileDown;
+        }
+    }
     public void ResetPath()
     {
         map.FloodFill(startPos, normalTile);
         curPos = startPos;
-        map.SetTile(startPos, curTile);
+        map.SetTile(startPos, curTileRight);
         confirmed = false;
     }
 }

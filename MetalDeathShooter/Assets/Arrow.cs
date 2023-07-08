@@ -19,11 +19,12 @@ public class Arrow : MonoBehaviour
         transform.Translate(transform.forward * Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
             //other.GetComponent<EnemyHealth>().DamageEnemy(damage);
+            Destroy(gameObject);
         }
         else Destroy(gameObject);
     }

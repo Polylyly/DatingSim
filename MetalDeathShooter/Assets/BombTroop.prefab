@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6679814759127809694}
   - component: {fileID: 8092523472238175020}
   - component: {fileID: 4462548963589255254}
+  - component: {fileID: 4868686773072168171}
   m_Layer: 3
   m_Name: BombTroop
   m_TagString: Enemy
@@ -144,6 +145,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.75, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &4868686773072168171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4865339918064296243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed1222d1304365440bf2c4f18561e832, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 3530136011063960095, guid: b08acc935194e284289e9365039cebe2, type: 3}
 --- !u!1 &4865339918865799881
 GameObject:
   m_ObjectHideFlags: 0

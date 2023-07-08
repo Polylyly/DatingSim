@@ -14,7 +14,7 @@ public class AttackTowers : MonoBehaviour
         {
             StartCoroutine(Attack(collision.gameObject));
             Colliding = true;
-            follow.moving = false;
+            follow.enabled = false;
         }
     }
 
@@ -24,7 +24,7 @@ public class AttackTowers : MonoBehaviour
         {
             StopCoroutine(Attack(collision.gameObject));
             Colliding = false;
-            follow.moving = true;
+            follow.enabled = true;
         }
     }
 

@@ -41,11 +41,15 @@ public class LaserTower : MonoBehaviour
         }
         if (distance != -1 && ableToLook)
         {
-            transform.LookAt(closestEnemy.transform);
+            Vector2 res = closestEnemy.transform.position - transform.position;
+            float angle = Vector2.Angle(Vector2.up, res);
+            if (closestEnemy.transform.position.x > transform.position.x) angle *= -1;
+            transform.eulerAngles = (new Vector3(0f, 0f, (angle)));
         }
         if (distance != -1 && ableToFire)
         {
             ableToFire = false;
+            booly = false;
             StartCoroutine(Fire());
         }
     }
@@ -53,10 +57,11 @@ public class LaserTower : MonoBehaviour
     IEnumerator Fire()
     {
         yield return new WaitForSeconds(fireDelay);
-        ableToLook = false;
-        booly = false;
+        distance = -1;
         GameObject currentLaser = Instantiate(Laser);
         currentLaser.transform.position = laserSpawnPoint.position;
+        currentLaser.transform.rotation = transform.rotation;
+        currentLaser.transform.parent = transform;
         StartCoroutine(DestroyArrow(currentLaser));
     }
 

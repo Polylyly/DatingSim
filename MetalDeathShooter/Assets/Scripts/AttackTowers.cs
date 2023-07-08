@@ -7,11 +7,7 @@ public class AttackTowers : MonoBehaviour
     public float damage, hitDelay;
     bool Colliding;
 
-<<<<<<< Updated upstream
-    private void OnCollisionEnter2D(Collision2D collision)
-=======
-    private void OnTriggerEnter2D(Collision2D collision)
->>>>>>> Stashed changes
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Tower"))
         {
@@ -20,11 +16,7 @@ public class AttackTowers : MonoBehaviour
         }
     }
 
-<<<<<<< Updated upstream
-    private void OnCollisionExit2D(Collision2D collision)
-=======
-    private void OnTriggerExit2D(Collision2D collision)
->>>>>>> Stashed changes
+    private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Tower"))
         {

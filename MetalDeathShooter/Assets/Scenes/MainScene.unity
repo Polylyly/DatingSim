@@ -3691,7 +3691,7 @@ MonoBehaviour:
   cornerTileRightDown: {fileID: 11400000, guid: 90c0a8e0cb216ba449538319d308385f, type: 2}
   cornerTileRightUp: {fileID: 11400000, guid: ae3c3f999ad9c464c94b0ab17d450079, type: 2}
   normalTile: {fileID: 11400000, guid: 9d8ef12aadae7494aae54e110eefda27, type: 2}
-  startPos: {x: -8, y: 0, z: 0}
+  startPos: {x: -9, y: 0, z: 0}
   endPos: {x: 7, y: 0, z: 0}
   topLeftBound: {x: -9, y: 4}
   bottomRightBound: {x: 8, y: -4}

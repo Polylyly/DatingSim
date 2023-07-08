@@ -36,7 +36,7 @@ public class AttackTowers : MonoBehaviour
         if(Colliding) StartCoroutine(Attack(Tower));
         if(suicideBomber)
         {
-            //Boom
+            GetComponentInChildren<BombBoat>().Explode();
         }
     }
 }

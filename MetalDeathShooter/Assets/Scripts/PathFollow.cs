@@ -9,9 +9,7 @@ using UnityEngine;
 public class PathFollow : MonoBehaviour
 {
     // this is a reference to the pathBehavior script that we will be getting path data from
-    public PathBehavior path;
-    // dumb little boolean flag so i can start the agent by pressing space
-    bool started = false;
+    public PathBehavior path;     
     // boolean flag so we stop pathfinding at the end of the path
     bool pathCompleted = false;
     public Rigidbody2D rb;
@@ -27,19 +25,15 @@ public class PathFollow : MonoBehaviour
     void Start()
     {
         // load path data from the pathmanager script
-         p = path.worldPath;
+        path = GameObject.FindWithTag("PathManager").GetComponent<PathBehavior>();
+        p = path.worldPath;
+
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        // dumb little boolean flag so i can start the agent with space
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            started = true;
-        }
-        if (started)
-        {
             //check if the path is completed
             //if so, don't run the pathing code beneath this
             if (currentWaypoint == p.Count - 1)
@@ -61,6 +55,5 @@ public class PathFollow : MonoBehaviour
             {
                 currentWaypoint++;
             }
-        }
     }
 }

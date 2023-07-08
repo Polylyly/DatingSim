@@ -21,6 +21,7 @@ public class PathFollow : MonoBehaviour
     private int currentWaypoint;
     // will store path data
     List<Vector3> p;
+    public bool moving;
 
     void Start()
     {
@@ -28,12 +29,14 @@ public class PathFollow : MonoBehaviour
         path = GameObject.FindWithTag("PathManager").GetComponent<PathBehavior>();
         p = path.worldPath;
 
-       
+        moving = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (moving)
+        {
             //check if the path is completed
             //if so, don't run the pathing code beneath this
             if (currentWaypoint == p.Count - 1)
@@ -55,5 +58,6 @@ public class PathFollow : MonoBehaviour
             {
                 currentWaypoint++;
             }
+        }
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class TowerGen : MonoBehaviour
 {
     public Tilemap tilemap;
-    public List<Vector3> tileWorldLocations;
+    public List<Vector3> tileWorldLocations, towerLocations;
     public int maxScrap;
     public GameObject scrapMound;
     public static TowerGen instance;
@@ -51,12 +51,11 @@ public class TowerGen : MonoBehaviour
         for (int i = 0; i < maxScrap; i++)
         {
             int itemIndex = Random.Range(0, tileWorldLocations.Count);
-            Instantiate(scrapMound, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
 
             float newDis = -2;
             foreach (Vector3 pos in path.worldPath)
             {
-                newDis = Vector2.Distance(tileWorldLocations[i], pos);
+                newDis = Vector2.Distance(tileWorldLocations[itemIndex], pos);
                 if (distance == -1 || newDis < distance)
                 {
                     distance = newDis;
@@ -64,26 +63,28 @@ public class TowerGen : MonoBehaviour
                 }
             }
 
+            towerLocations.Add(tileWorldLocations[itemIndex] + new Vector3(0.5f, 0.5f, 0));
+
             if(newDis <= wallDistance)
             {
-                Instantiate(wallTower, new Vector3(tileWorldLocations[i].x + 0.5f, tileWorldLocations[i].y + 0.5f, tileWorldLocations[i].z), Quaternion.identity);
+                Instantiate(wallTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }
 
             if (newDis > wallDistance && newDis <= mineDistance)
             {
                 int chance = Random.Range(1, 2);
-                if(chance == 1) Instantiate(mineTower, new Vector3(tileWorldLocations[i].x + 0.5f, tileWorldLocations[i].y + 0.5f, tileWorldLocations[i].z), Quaternion.identity);
-                if (chance == 2) Instantiate(laserTower, new Vector3(tileWorldLocations[i].x + 0.5f, tileWorldLocations[i].y + 0.5f, tileWorldLocations[i].z), Quaternion.identity);
+                if(chance == 1) Instantiate(mineTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
+                if (chance == 2) Instantiate(laserTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }
 
             if (newDis > mineDistance && newDis <= arrowDistance)
             {
-                Instantiate(arrowTower, new Vector3(tileWorldLocations[i].x + 0.5f, tileWorldLocations[i].y + 0.5f, tileWorldLocations[i].z), Quaternion.identity);
+                Instantiate(arrowTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }
 
             if (newDis > arrowDistance)
             {
-                Instantiate(sniperTower, new Vector3(tileWorldLocations[i].x + 0.5f, tileWorldLocations[i].y + 0.5f, tileWorldLocations[i].z), Quaternion.identity);
+                Instantiate(sniperTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }
         }
     }

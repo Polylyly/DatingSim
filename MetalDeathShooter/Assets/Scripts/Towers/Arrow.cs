@@ -10,20 +10,21 @@ public class Arrow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.AddForce(transform.up * speed);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(transform.forward * Time.deltaTime * speed);
+        //transform.Translate(transform.up * Time.deltaTime * speed);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {
-            //other.GetComponent<EnemyHealth>().DamageEnemy(damage);
+            other.GetComponent<HealthManager>().DealDamage(damage);
             Destroy(gameObject);
         }
         else Destroy(gameObject);

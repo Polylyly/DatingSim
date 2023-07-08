@@ -6,6 +6,7 @@ public class AttackTowers : MonoBehaviour
 {
     public float damage, hitDelay;
     bool Colliding;
+    public PathFollow follow;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,6 +14,7 @@ public class AttackTowers : MonoBehaviour
         {
             StartCoroutine(Attack(collision.gameObject));
             Colliding = true;
+            follow.moving = false;
         }
     }
 
@@ -22,6 +24,7 @@ public class AttackTowers : MonoBehaviour
         {
             StopCoroutine(Attack(collision.gameObject));
             Colliding = false;
+            follow.moving = true;
         }
     }
 

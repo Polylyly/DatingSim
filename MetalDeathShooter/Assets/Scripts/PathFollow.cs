@@ -22,14 +22,25 @@ public class PathFollow : MonoBehaviour
     // will store path data
     List<Vector3> p;
     public bool moving;
+    public bool backwards;
 
     void Start()
     {
-        // load path data from the pathmanager script
         path = GameObject.FindWithTag("PathManager").GetComponent<PathBehavior>();
-        p = path.worldPath;
-
         moving = true;
+        if (backwards)
+        {
+            p = new List<Vector3>();
+            for(int i = path.worldPath.Count - 1; i > 0; i--)
+            {
+                p.Add(path.worldPath[i]);
+            }
+        }
+        else {
+            // load path data from the pathmanager script
+
+            p = path.worldPath;
+        }
     }
 
     // Update is called once per frame

@@ -21,6 +21,11 @@ public class TroopSpawnManager : MonoBehaviour
 
     public void SpawnTroop(int index)
     {
+        if(index == 3)
+        {
+            Instantiate(troops[index], this.transform.GetChild(0));
+            return;
+        }
         Instantiate(troops[index], this.transform);
     }
 }

@@ -24,7 +24,6 @@ public class ArrowTower : MonoBehaviour
     void Update()
     {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, scanRadius, detectMask);
-        Debug.Log(cols.Length);
         foreach (Collider2D col in cols)
         {
             float newDis = Vector2.Distance(transform.position, col.transform.position);

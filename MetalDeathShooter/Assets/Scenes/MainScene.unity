@@ -405,7 +405,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 609129221}
         m_TargetAssemblyTypeName: TroopSpawnManager, Assembly-CSharp
         m_MethodName: SpawnTroop
         m_Mode: 3
@@ -3954,7 +3954,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 609129221}
         m_TargetAssemblyTypeName: TroopSpawnManager, Assembly-CSharp
         m_MethodName: SpawnTroop
         m_Mode: 3

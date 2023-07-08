@@ -19,6 +19,7 @@ public class SniperTower : MonoBehaviour
     {
         ableToFire = true;
         ableToLook = false;
+        troopSpawner = GameObject.Find("TroopSpawner").GetComponentInChildren<TroopSpawnManager>();
     }
 
     // Update is called once per frame

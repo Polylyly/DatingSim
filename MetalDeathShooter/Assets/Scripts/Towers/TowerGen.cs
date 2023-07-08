@@ -31,6 +31,14 @@ public class TowerGen : MonoBehaviour
         Generate();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("q"))
+        {
+            Generate();
+        }
+    }
+
     //Called by another script (nonexistent) whenever scrap needs to be generated
     public void Generate()
     {

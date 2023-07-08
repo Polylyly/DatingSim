@@ -42,7 +42,7 @@ public class TowerGen : MonoBehaviour
             Vector3 place = tilemap.CellToWorld(localPlace);
             if (tilemap.HasTile(localPlace))
             {
-                tileWorldLocations.Add(place);
+                tileWorldLocations.Add(place);               
             }
         }
 
@@ -63,7 +63,8 @@ public class TowerGen : MonoBehaviour
                 }
             }
 
-            towerLocations.Add(tileWorldLocations[itemIndex] + new Vector3(0.5f, 0.5f, 0));
+            // towerLocations.Add(tileWorldLocations[itemIndex] + new Vector3(0.5f, 0.5f, 0));
+            tilemap.SetTile(tilemap.WorldToCell(tileWorldLocations[itemIndex]), null);
 
             if(newDis <= wallDistance)
             {

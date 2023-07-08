@@ -22,14 +22,27 @@ public class PathFollow : MonoBehaviour
     // will store path data
     List<Vector3> p;
     public bool moving;
+    public bool backwards;
 
     void Start()
     {
-        // load path data from the pathmanager script
         path = GameObject.FindWithTag("PathManager").GetComponent<PathBehavior>();
-        p = path.worldPath;
-
         moving = true;
+        if (backwards)
+        {
+            p = new List<Vector3>();
+            for(int i = path.worldPath.Count - 1; i > 0; i--)
+            {
+                p.Add(path.worldPath[i]);
+            }
+            p.Add(path.startPos + new Vector3Int(-1, 0, 0));
+            p.Add(path.startPos + new Vector3Int(-2, 0, 0));
+        }
+        else {
+            // load path data from the pathmanager script
+
+            p = path.worldPath;
+        }
     }
 
     // Update is called once per frame
@@ -42,6 +55,7 @@ public class PathFollow : MonoBehaviour
             if (currentWaypoint == p.Count - 1)
             {
                 pathCompleted = true;
+                if (backwards) Destroy(this.gameObject);
                 return;
             }
             else

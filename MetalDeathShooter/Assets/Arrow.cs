@@ -19,7 +19,7 @@ public class Arrow : MonoBehaviour
         transform.Translate(transform.forward * Time.deltaTime * speed);
     }
 
-    private void OnTriggerEnter2D(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Enemy"))
         {

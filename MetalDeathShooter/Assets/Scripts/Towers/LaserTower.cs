@@ -6,7 +6,8 @@ public class LaserTower : MonoBehaviour
 {
     public LayerMask detectMask;
     public float scanRadius;
-    public float distance, fireDelay, laserLifetime;
+    private float distance = -1;
+    public float fireDelay, laserLifetime;
     GameObject closestEnemy;
     public GameObject Laser;
     public Transform laserSpawnPoint;

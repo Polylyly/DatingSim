@@ -6,7 +6,8 @@ public class ArrowTower : MonoBehaviour
 {
     public LayerMask detectMask;
     public float scanRadius;
-    public float distance, fireDelay, arrowLifetime;
+    private float distance = -1;
+    public float fireDelay, arrowLifetime;
     GameObject closestEnemy;
     public GameObject Arrow;
     public Transform arrowSpawnPoint;
@@ -23,6 +24,7 @@ public class ArrowTower : MonoBehaviour
     void Update()
     {
         Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, scanRadius, detectMask);
+        Debug.Log(cols.Length);
         foreach (Collider2D col in cols)
         {
             float newDis = Vector2.Distance(transform.position, col.transform.position);
@@ -39,7 +41,16 @@ public class ArrowTower : MonoBehaviour
         }
         if(distance != -1 && ableToLook)
         {
-            transform.LookAt(closestEnemy.transform);
+            /**
+            Quaternion rotation = Quaternion.LookRotation
+            (closestEnemy.transform.position - transform.position, transform.TransformDirection(Vector3.up));
+            transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
+            */
+            Vector2 res = closestEnemy.transform.position - transform.position;
+            float angle = Vector2.Angle(Vector2.up, res);
+            if (closestEnemy.transform.position.x > transform.position.x) angle *= -1;
+            transform.eulerAngles = (new Vector3(0f, 0f, (angle)));
+            
         }
         if (distance != -1 && ableToFire)
         {
@@ -52,9 +63,10 @@ public class ArrowTower : MonoBehaviour
     {
         yield return new WaitForSeconds(fireDelay);
         ableToLook = false;
+        distance = -1;
         GameObject currentArrow = Instantiate(Arrow);
         currentArrow.transform.position = arrowSpawnPoint.position;
-        currentArrow.transform.LookAt(closestEnemy.transform);
+        currentArrow.transform.rotation = transform.rotation;
         StartCoroutine(DestroyArrow(currentArrow));
     }
 

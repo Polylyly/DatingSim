@@ -2,16 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArrowTower : MonoBehaviour
+public class SniperTower : MonoBehaviour
 {
     public LayerMask detectMask;
     public float scanRadius;
-    private float distance = -1;
+    private float damage = -1;
     public float fireDelay, arrowLifetime;
     GameObject closestEnemy;
     public GameObject Arrow;
     public Transform arrowSpawnPoint;
     bool ableToLook, ableToFire;
+    public TroopSpawnManager troopSpawner;
 
     // Start is called before the first frame update
     void Start()
@@ -23,35 +24,29 @@ public class ArrowTower : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Collider2D[] cols = Physics2D.OverlapCircleAll(transform.position, scanRadius, detectMask);
-        foreach (Collider2D col in cols)
+        HealthManager[] ships = troopSpawner.gameObject.transform.GetComponentsInChildren<HealthManager>();
+        foreach (HealthManager att in ships)
         {
-            float newDis = Vector2.Distance(transform.position, col.transform.position);
-            if (distance == -1 || newDis < distance)
+            float newDis = att.health;
+            if (damage == -1 || newDis > damage)
             {
-                distance = newDis;
-                closestEnemy = col.gameObject;
+                damage = newDis;
+                closestEnemy = att.gameObject;
             }
         }
-        if (distance != -1 && !ableToLook)
+        if (damage != -1 && !ableToLook)
         {
             ableToLook = true;
             ableToFire = true;
         }
-        if(distance != -1 && ableToLook)
+        if (damage != -1 && ableToLook)
         {
-            /**
-            Quaternion rotation = Quaternion.LookRotation
-            (closestEnemy.transform.position - transform.position, transform.TransformDirection(Vector3.up));
-            transform.rotation = new Quaternion(0, 0, rotation.z, rotation.w);
-            */
             Vector2 res = closestEnemy.transform.position - transform.position;
             float angle = Vector2.Angle(Vector2.up, res);
             if (closestEnemy.transform.position.x > transform.position.x) angle *= -1;
             transform.eulerAngles = (new Vector3(0f, 0f, (angle)));
-            
         }
-        if (distance != -1 && ableToFire)
+        if (damage != -1 && ableToFire)
         {
             ableToFire = false;
             StartCoroutine(Fire());
@@ -62,9 +57,8 @@ public class ArrowTower : MonoBehaviour
     {
         yield return new WaitForSeconds(fireDelay);
         ableToLook = false;
-        distance = -1;
+        damage = -1;
         GameObject currentArrow = Instantiate(Arrow);
-        Debug.Log(currentArrow);
         currentArrow.transform.position = arrowSpawnPoint.position;
         currentArrow.transform.rotation = transform.rotation;
         StartCoroutine(DestroyArrow(currentArrow));

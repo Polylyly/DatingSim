@@ -27,6 +27,5 @@ public class Arrow : MonoBehaviour
             other.GetComponent<HealthManager>().DealDamage(damage);
             Destroy(gameObject);
         }
-        else Destroy(gameObject);
     }
 }

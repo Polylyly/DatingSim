@@ -7,6 +7,7 @@ public class AttackTowers : MonoBehaviour
     public float damage, hitDelay;
     bool Colliding;
     public PathFollow follow;
+    public bool suicideBomber;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -33,5 +34,9 @@ public class AttackTowers : MonoBehaviour
         yield return new WaitForSeconds(hitDelay);
         Tower.GetComponent<TowerHealth>().DamageTower(damage);
         if(Colliding) StartCoroutine(Attack(Tower));
+        if(suicideBomber)
+        {
+            //Boom
+        }
     }
 }

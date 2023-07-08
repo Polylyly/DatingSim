@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8092523472238175020}
   - component: {fileID: 4462548963589255254}
   m_Layer: 3
-  m_Name: BasicTroop
+  m_Name: BombTroop
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f574bc38fd78a1a45844080b476fdba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 3
-  health: 3
+  maxHealth: 2
+  health: 2
 --- !u!114 &8092523472238175020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,9 +114,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d90ff7adc637e74a842b9c70f82bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 10
   hitDelay: 1
   follow: {fileID: 4865339918064296241}
+  suicideBomber: 1
 --- !u!61 &4462548963589255254
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,7 +217,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: b0f4c2f09ceb99644b8c5035130e9a20, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e7434c3d21993a8458aeed9194724328, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

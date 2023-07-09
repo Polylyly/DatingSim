@@ -8,6 +8,8 @@ public class PathBehavior : MonoBehaviour
 {
     // ref to the tilemap
     public Tilemap map;
+    // ref to the confirm prompt
+    public GameObject confirmPrompt;
     // the tiles that will be used for the very end of the path
     public Tile curTileUp;
     public Tile curTileDown;
@@ -51,6 +53,10 @@ public class PathBehavior : MonoBehaviour
     private float holdTime = 0.2f;
     private float holdTimer;
 
+    public void ShowConfirmPrompt()
+    {
+        confirmPrompt.SetActive(true);
+    }
     void Start()
     {
         // set things up
@@ -82,11 +88,7 @@ public class PathBehavior : MonoBehaviour
             {
                 // if the path has not reached the end pos, do not confirm it
                 if (curPos != endPos) return;
-                ConfirmPath();
-            }
-            else
-            {
-                ResetPath();
+                ShowConfirmPrompt();
             }
         }
     }

@@ -8,6 +8,7 @@ public class butt : MonoBehaviour
 {
     public GameObject anim;
     public AudioSource sound;
+  
 
     [Space]
     public GameObject settingsCanvas;
@@ -31,4 +32,6 @@ public class butt : MonoBehaviour
         settingsCanvas.SetActive(true);
         normalCanvas.SetActive(false);
     }
+
+   
 }

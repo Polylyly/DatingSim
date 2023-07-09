@@ -23,7 +23,7 @@ public class TroopSpawnManager : MonoBehaviour
     {
         if(index == 3)
         {
-            Instantiate(troops[index], this.transform.GetChild(0));
+            Instantiate(troops[index], this.transform.GetChild(0).position, Quaternion.identity, this.transform);
             return;
         }
         Instantiate(troops[index], this.transform);

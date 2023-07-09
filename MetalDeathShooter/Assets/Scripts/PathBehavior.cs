@@ -252,6 +252,10 @@ public class PathBehavior : MonoBehaviour
         map.SetTile(startPos + new Vector3Int(-2, 0, 0), pathTileHor);
         map.SetTile(endPos + new Vector3Int(1, 0, 0), pathTileHor);
 
+        //reset the path lists
+        tilePath.Clear();
+        worldPath.Clear();
+
         //add the starting tiles
         tilePath.Add(startPos + new Vector3Int(-2, 0, 0));
         worldPath.Add(map.GetCellCenterWorld(startPos + new Vector3Int(-2, 0, 0)));

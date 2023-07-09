@@ -59,10 +59,13 @@ public class SniperTower : MonoBehaviour
         yield return new WaitForSeconds(fireDelay);
         ableToLook = false;
         damage = -1;
-        GameObject currentArrow = Instantiate(Arrow);
-        currentArrow.transform.position = arrowSpawnPoint.position;
-        currentArrow.transform.rotation = transform.rotation;
-        StartCoroutine(DestroyArrow(currentArrow));
+        if (GameObject.Find("TroopSpawner").transform.childCount > 1 || GameObject.Find("SubSpawner").transform.childCount > 0)
+        {
+            GameObject currentArrow = Instantiate(Arrow);
+            currentArrow.transform.position = arrowSpawnPoint.position;
+            currentArrow.transform.rotation = transform.rotation;
+            StartCoroutine(DestroyArrow(currentArrow));
+        }
     }
 
     IEnumerator DestroyArrow(GameObject currentArrow)

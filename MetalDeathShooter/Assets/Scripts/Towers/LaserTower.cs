@@ -58,11 +58,14 @@ public class LaserTower : MonoBehaviour
     {
         yield return new WaitForSeconds(fireDelay);
         distance = -1;
-        GameObject currentLaser = Instantiate(Laser);
-        currentLaser.transform.position = laserSpawnPoint.position;
-        currentLaser.transform.rotation = transform.rotation;
-        currentLaser.transform.parent = transform;
-        StartCoroutine(DestroyArrow(currentLaser));
+        if (GameObject.Find("TroopSpawner").transform.childCount > 1 || GameObject.Find("SubSpawner").transform.childCount > 0)
+        {
+            GameObject currentLaser = Instantiate(Laser);
+            currentLaser.transform.position = laserSpawnPoint.position;
+            currentLaser.transform.rotation = transform.rotation;
+            currentLaser.transform.parent = transform;
+            StartCoroutine(DestroyArrow(currentLaser));
+        }
     }
 
     IEnumerator DestroyArrow(GameObject currentLaser)

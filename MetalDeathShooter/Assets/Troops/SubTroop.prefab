@@ -101,6 +101,7 @@ MonoBehaviour:
   hitDelay: 1
   follow: {fileID: 5358610530796285821}
   suicideBomber: 0
+  submarine: 1
 --- !u!61 &4462548963589255254
 BoxCollider2D:
   m_ObjectHideFlags: 0

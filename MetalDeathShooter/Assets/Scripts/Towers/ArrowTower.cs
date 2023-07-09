@@ -63,11 +63,14 @@ public class ArrowTower : MonoBehaviour
         yield return new WaitForSeconds(fireDelay);
         ableToLook = false;
         distance = -1;
-        GameObject currentArrow = Instantiate(Arrow);
-        Debug.Log(currentArrow);
-        currentArrow.transform.position = arrowSpawnPoint.position;
-        currentArrow.transform.rotation = transform.rotation;
-        StartCoroutine(DestroyArrow(currentArrow));
+        if (GameObject.Find("TroopSpawner").transform.childCount > 1 || GameObject.Find("SubSpawner").transform.childCount > 0)
+        {
+            GameObject currentArrow = Instantiate(Arrow);
+            Debug.Log(currentArrow);
+            currentArrow.transform.position = arrowSpawnPoint.position;
+            currentArrow.transform.rotation = transform.rotation;
+            StartCoroutine(DestroyArrow(currentArrow));
+        }
     }
 
     IEnumerator DestroyArrow(GameObject currentArrow)

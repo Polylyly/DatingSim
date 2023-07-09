@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: cdd5bbed4f51aa34287214ea4520997f, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.7169812, g: 0.36863655, b: 0.36863655, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -282,7 +282,7 @@ MonoBehaviour:
   detectMask:
     serializedVersion: 2
     m_Bits: 8
-  scanRadius: 8
+  scanRadius: 10
   fireDelay: 5
   laserLifetime: 5
   Laser: {fileID: 2719314141392615109, guid: f4a860ed8c4c5c34fb8bc4b6faf0313c, type: 3}

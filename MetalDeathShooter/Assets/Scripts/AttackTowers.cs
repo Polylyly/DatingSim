@@ -7,7 +7,7 @@ public class AttackTowers : MonoBehaviour
     public float damage, hitDelay;
     bool Colliding;
     public PathFollow follow;
-    public bool suicideBomber;
+    public bool suicideBomber, submarine;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -16,6 +16,7 @@ public class AttackTowers : MonoBehaviour
             StartCoroutine(Attack(collision.gameObject));
             Colliding = true;
             follow.enabled = false;
+            if (submarine && collision.gameObject.name == "CoreShip(Clone)") follow.enabled = true;
         }
     }
 

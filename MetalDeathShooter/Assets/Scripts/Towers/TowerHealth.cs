@@ -11,6 +11,7 @@ public class TowerHealth : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        onDestroy += () => Kill();
         currentHealth = maxHealth;
     }
 
@@ -20,9 +21,6 @@ public class TowerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             this.onDestroy();
-            this.gameObject.SetActive(false);
-            //staggered so that the events don't break
-            Invoke("Kill", 2f);
         }
     }
 

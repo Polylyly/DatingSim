@@ -9,6 +9,10 @@ public class butt : MonoBehaviour
     public GameObject anim;
     public AudioSource sound;
 
+    [Space]
+    public GameObject settingsCanvas;
+    public GameObject normalCanvas;
+
     public void PLay()
     {
         anim.SetActive(true);
@@ -20,5 +24,11 @@ public class butt : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         SceneManager.LoadScene("MainScene");
+    }
+
+    public void Settings()
+    {
+        settingsCanvas.SetActive(true);
+        normalCanvas.SetActive(false);
     }
 }

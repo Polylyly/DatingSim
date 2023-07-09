@@ -15,6 +15,7 @@ public class MoneyManager : MonoBehaviour
 
     public int money;
     public Btn[] buttons;
+    public bool bankrupt = false;
 
 
     private TextMeshProUGUI text;
@@ -30,9 +31,19 @@ public class MoneyManager : MonoBehaviour
     void Update()
     {
         text.text = "$" + money;
+        bankrupt = true;
+        // will remain true only if the player cannot buy any more units
         foreach(Btn btn in buttons)
         {
-            if (money < btn.cost) btn.reference.GetComponent<Button>().interactable = false; else btn.reference.GetComponent<Button>().interactable = true;
+            if (money < btn.cost)
+            {
+                btn.reference.GetComponent<Button>().interactable = false;
+            }
+            else
+            {
+                btn.reference.GetComponent<Button>().interactable = true;
+                bankrupt = false;
+            }
         }
     }
 

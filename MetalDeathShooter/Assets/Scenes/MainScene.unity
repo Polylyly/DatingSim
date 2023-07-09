@@ -1375,7 +1375,7 @@ MonoBehaviour:
   scrapMound: {fileID: 0}
   scanRadius: 0
   path: {fileID: 1361243939}
-  arrowDistance: 6
+  arrowDistance: 3
   mineDistance: 2
   wallDistance: 1
   arrowTower: {fileID: 631569849157507190, guid: 3bf71c6dce76a904798b81e180e6abf0, type: 3}

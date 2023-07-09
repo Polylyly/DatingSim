@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject troopSpawner;
     public MoneyManager moneyManager;
     public Image waveCompleteScreen;
+    public GameObject coreShip;
+    public Vector3 coreShipPos;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,8 +21,7 @@ public class GameManager : MonoBehaviour
         // set up a reference to and then disable the bar
         bar.SetActive(false);
 
-        // run onWaveComplete when the core ship is destroyed
-        GameObject.Find("CoreShip").GetComponent<TowerHealth>().onDestroy += () => OnWaveComplete();
+        
 
 
         // start wave is called when the scene is loaded
@@ -51,6 +52,11 @@ public class GameManager : MonoBehaviour
 
         // give initial money
         moneyManager.AddMoney(1000);
+
+        // respawn the core ship
+        GameObject cs = Instantiate(coreShip, coreShipPos, Quaternion.identity);
+        // run onWaveComplete when the core ship is destroyed
+        cs.GetComponent<TowerHealth>().onDestroy += () => OnWaveComplete();
     }
     void OnPathConfirmed()
     {

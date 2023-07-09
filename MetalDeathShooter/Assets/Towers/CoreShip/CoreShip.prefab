@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5086466653326308415}
   - component: {fileID: 2009176428}
   m_Layer: 0
-  m_Name: Wall Tower
+  m_Name: CoreShip
   m_TagString: Tower
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

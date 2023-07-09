@@ -2836,7 +2836,7 @@ MonoBehaviour:
   startText: {fileID: 761295077}
   coreShip: {fileID: 6847158055651467222, guid: a7fbbbc71b817df43ae65c612210cb32, type: 3}
   coreShipPos: {x: 8, y: 1, z: 0}
-  waveCount: 0
+  waveCount: 6
   timer: -1
   towerGen: {fileID: 1258559014}
   waveData:
@@ -2847,6 +2847,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ea93f6ef49ac4264997b6ea6404efd53, type: 2}
   - {fileID: 11400000, guid: 2af373ca7317f0c48ac3fc41680dc24f, type: 2}
   - {fileID: 11400000, guid: d66abf0744364cd49b5aeb900cdc6542, type: 2}
+  - {fileID: 11400000, guid: 3de55ea07654de04387f60d1e475deed, type: 2}
+  - {fileID: 11400000, guid: 9daa09729b0e4da46822bd242ba5bcec, type: 2}
+  tutorialComplete: 0
 --- !u!4 &1105825465
 Transform:
   m_ObjectHideFlags: 0

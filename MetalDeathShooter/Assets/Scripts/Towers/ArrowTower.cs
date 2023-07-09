@@ -66,7 +66,6 @@ public class ArrowTower : MonoBehaviour
         if (GameObject.Find("TroopSpawner").transform.childCount > 1 || GameObject.Find("SubSpawner").transform.childCount > 0)
         {
             GameObject currentArrow = Instantiate(Arrow);
-            Debug.Log(currentArrow);
             currentArrow.transform.position = arrowSpawnPoint.position;
             currentArrow.transform.rotation = transform.rotation;
             StartCoroutine(DestroyArrow(currentArrow));

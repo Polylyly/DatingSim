@@ -53,6 +53,7 @@ public class MineTowerBehavior : MonoBehaviour
             }
         }
         Destroy(this.gameObject);
+        GameObject.Find("AIPlacer").GetComponent<TowerGen>().Place(transform.position);
         Instantiate(explosion, transform.position, explosion.transform.localRotation);
         yield break;
     }

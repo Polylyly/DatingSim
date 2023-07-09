@@ -27,6 +27,7 @@ public class TowerHealth : MonoBehaviour
     public void Kill()
     {
         Destroy(this.gameObject);
+        GameObject.Find("AIPlacer").GetComponent<TowerGen>().tileWorldLocations.Add(transform.position - new Vector3(0.5f, 0.5f, 0f));
     }
     public void DamageTower(float damage)
     {

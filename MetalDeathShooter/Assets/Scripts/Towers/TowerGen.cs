@@ -56,6 +56,11 @@ public class TowerGen : MonoBehaviour
     //Called by another script (nonexistent) whenever scrap needs to be generated
     public void Generate()
     {
+        wallPlacements = 0;
+        minePlacements = 0;
+        arrowPlacements = 0;
+        laserPlacements = 0;
+        sniperPlacements = 0;
         // repeats to generate each entity
         int loopCounter = 0;
         for (int i = 0; i < maxScrap; i++)

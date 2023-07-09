@@ -142,6 +142,11 @@ public class GameManager : MonoBehaviour
     {
         waveCount = 0;
         Destroy(coreShip);
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        foreach(GameObject tower in towers)
+        {
+            Destroy(tower);
+        }
         StartWave();
     }
 }

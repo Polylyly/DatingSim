@@ -2836,7 +2836,7 @@ MonoBehaviour:
   startText: {fileID: 761295077}
   coreShip: {fileID: 6847158055651467222, guid: a7fbbbc71b817df43ae65c612210cb32, type: 3}
   coreShipPos: {x: 8, y: 1, z: 0}
-  waveCount: 6
+  waveCount: 0
   timer: -1
   towerGen: {fileID: 1258559014}
   waveData:

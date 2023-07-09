@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(PlayerPrefs.GetInt("TutorialComplete"));
+        
         if (timer!= -1f) timer -= Time.deltaTime;
         
         //check if the player has lost the game
@@ -94,7 +94,11 @@ public class GameManager : MonoBehaviour
         cs.GetComponent<TowerHealth>().onDestroy += () => OnWaveComplete();
 
         // load the wave data
-        WaveData data = waveData[Mathf.Clamp(waveCount, 0, waveData.Length - 1)];
+        Debug.Log("before: " +waveCount);
+        int index = waveCount;
+        //Mathf.Clamp(index, 0, waveData.Length - 1);
+        WaveData data = waveData[index]; 
+        Debug.Log("aft: " + waveCount);
         towerGen.maxScrap = data.genNumber;
         towerGen.wallThreshold = data.wallThreshold;
         towerGen.mineThreshold = data.mineThreshold;

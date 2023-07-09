@@ -2643,7 +2643,7 @@ MonoBehaviour:
   - reference: {fileID: 292144408}
     cost: 150
   bankrupt: 0
-  gm: {fileID: 0}
+  gm: {fileID: 1105825464}
 --- !u!114 &925913523
 MonoBehaviour:
   m_ObjectHideFlags: 0

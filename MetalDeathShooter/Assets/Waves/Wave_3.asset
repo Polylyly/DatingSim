@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ce82b05f0de8408a17b7f69e18d69, type: 3}
   m_Name: Wave_3
   m_EditorClassIdentifier: 
-  levelStartText: The enemy is constructing walls! Use the bomberships to take them
-    down!
-  genNumber: 2
+  levelStartText: The enemy is prepared to place walls in the way of your path! Run
+    them down with bomberships!
+  genNumber: 3
   wallThreshold: 2
   mineThreshold: 0
-  arrowThreshold: 1
+  arrowThreshold: 0
   laserThreshold: 0
   sniperThreshold: 0
   rerollChance: 100
   startMoney: 550
-  spawnInitial: 1
+  spawnInitial: 0
+  spawnFinal: 0
+  ignorePlacementRules: 0
   allowBombers: 1
   allowDestroyers: 0
   allowSubs: 0

@@ -6,7 +6,6 @@ using UnityEngine.Tilemaps;
 public class TowerGen : MonoBehaviour
 {
     public Tilemap tilemap;
-    public GameManager gameManager;
     public List<Vector3> tileWorldLocations, towerLocations;
     public int maxScrap;
     public GameObject scrapMound;
@@ -42,7 +41,7 @@ public class TowerGen : MonoBehaviour
         instance = this;
 
         //links the generation to the path being confirmed
-        path.onPathConfirmed += () => { if (gameManager.waveData[gameManager.waveCount].spawnFinal) Generate(); };//Mathf.Clamp(gameManager.waveCount - 1, 0, gameManager.waveData.Length - 1)].spawnFinal) Generate(); };
+        path.onPathConfirmed += () => Generate();
     }
 
     private void Update()
@@ -50,7 +49,7 @@ public class TowerGen : MonoBehaviour
         // for debug purposes
         if (Input.GetKeyDown("q"))
         {
-            Generate();
+            //Generate();
         }
     }
 
@@ -109,7 +108,7 @@ public class TowerGen : MonoBehaviour
                 }
             }
 
-            if (distance == -1) //|| gameManager.waveData[Mathf.Clamp(gameManager.waveCount - 1, 0, gameManager.waveData.Length - 1)].ignorePlacementRules) //there is no path found, so make tower placement fully random.
+            if (distance == -1) //there is no path found, so make tower placement fully random.
             {
                 int chance = Random.Range(0, 5);
                 if (chance == 0) { if (PlaceWall(itemIndex)) { i--; continue; } }

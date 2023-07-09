@@ -21,7 +21,9 @@ MonoBehaviour:
   sniperThreshold: 0
   rerollChance: 100
   startMoney: 500
-  spawnInitial: 1
+  spawnInitial: 0
+  spawnFinal: 0
+  ignorePlacementRules: 0
   allowBombers: 1
   allowDestroyers: 0
   allowSubs: 1

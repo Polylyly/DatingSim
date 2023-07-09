@@ -23,9 +23,12 @@ public class GameManager : MonoBehaviour
     public TowerGen towerGen;
 
     public WaveData[] waveData;
+    public bool tutorialComplete = false;
     // Start is called before the first frame update
     void Start()
     {
+        if (!PlayerPrefs.HasKey("TutorialComplete")) PlayerPrefs.SetInt("TutorialComplete", 0);
+
         // link up the event to show the placeenemy bar when the path is confirmed
         pathBehavior.onPathConfirmed += OnPathConfirmed;
 
@@ -43,7 +46,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timer!= -1f) timer -= Time.deltaTime;
+        Debug.Log(PlayerPrefs.GetInt("TutorialComplete"));
+        if (timer!= -1f) timer -= Time.deltaTime;
         
         //check if the player has lost the game
         //we include a timer here to check for if the player loses at the exact same time as winning - win trumps a loss
@@ -90,7 +94,7 @@ public class GameManager : MonoBehaviour
         cs.GetComponent<TowerHealth>().onDestroy += () => OnWaveComplete();
 
         // load the wave data
-        WaveData data = waveData[waveCount];
+        WaveData data = waveData[Mathf.Clamp(waveCount, 0, waveData.Length - 1)];
         towerGen.maxScrap = data.genNumber;
         towerGen.wallThreshold = data.wallThreshold;
         towerGen.mineThreshold = data.mineThreshold;
@@ -101,8 +105,11 @@ public class GameManager : MonoBehaviour
         moneyManager.AddMoney(data.startMoney);
 
         // show the start text screen
-        startScreen.gameObject.SetActive(true);
-        startText.text = data.levelStartText;
+        if (!(startText.Equals("") || startText == null))
+        {
+            startScreen.gameObject.SetActive(true);
+            startText.text = data.levelStartText;
+        }
 
         
 
@@ -117,6 +124,12 @@ public class GameManager : MonoBehaviour
         waveCount++;
         text.text = "Wave " + waveCount + " Complete!";
         
+        // check if tutorial is completed
+
+        if(waveCount == 8)
+        {
+            PlayerPrefs.SetInt("TutorialComplete", 1);
+        }
         
 
     }
@@ -140,7 +153,17 @@ public class GameManager : MonoBehaviour
 
     public void ResetGame()
     {
-        waveCount = 0;
+        bool booly = false;
+        if(PlayerPrefs.GetInt("TutorialComplete") == 1) booly = true;
+        if (booly)
+        {
+            waveCount = 7;
+            
+        }
+        else
+        {
+            waveCount = 0;
+        }
         Destroy(coreShip);
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
         foreach(GameObject tower in towers)

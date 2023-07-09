@@ -15,8 +15,10 @@ public class WaveData : ScriptableObject
     public int rerollChance;
     public int startMoney;
     public bool spawnInitial;
-
+    public bool spawnFinal;
+    public bool ignorePlacementRules;
     public bool allowBombers;
     public bool allowDestroyers;
     public bool allowSubs;
+    
 }

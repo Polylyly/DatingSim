@@ -20,10 +20,16 @@ public class TowerHealth : MonoBehaviour
         if(currentHealth <= 0)
         {
             this.onDestroy();
-            Destroy(this.gameObject);
+            this.gameObject.SetActive(false);
+            //staggered so that the events don't break
+            Invoke("Kill", 2f);
         }
     }
 
+    public void Kill()
+    {
+        Destroy(this.gameObject);
+    }
     public void DamageTower(float damage)
     {
         currentHealth -= damage;

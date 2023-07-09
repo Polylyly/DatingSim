@@ -132,7 +132,7 @@ public class PathBehavior : MonoBehaviour
             // remove the last item from the list of world pos
             worldPath.RemoveAt(worldPath.Count - 1);
             // change the tile we used to be at to a regular tile
-            map.SetTile(curPos, normalTile);
+            map.SetTile(curPos, null);
             // move the very end of the path
             curPos += amount;
             // set the new very end of the path to the end of path tile
@@ -140,7 +140,7 @@ public class PathBehavior : MonoBehaviour
             return;
         }
         // make sure you can't path over your own path
-        if (!map.GetTile(curPos + amount).Equals(normalTile)) return;
+        if (map.GetTile(curPos + amount) != null) return;
         // check that you cant path outside the bounds
         if ((curPos + amount).x < topLeftBound.x || (curPos + amount).x > bottomRightBound.x || (curPos + amount).y > topLeftBound.y || (curPos + amount).y < bottomRightBound.y) return;
         
@@ -245,14 +245,21 @@ public class PathBehavior : MonoBehaviour
     }
     public void ResetPath()
     {
-        map.FloodFill(startPos, normalTile);
+        //reset the tilemap visuals
+        map.ClearAllTiles();
+        map.SetTile(startPos, curTileRight);
+        map.SetTile(startPos + new Vector3Int(-1, 0, 0), pathTileHor);
+        map.SetTile(startPos + new Vector3Int(-2, 0, 0), pathTileHor);
+        map.SetTile(endPos + new Vector3Int(1, 0, 0), pathTileHor);
+
         //add the starting tiles
         tilePath.Add(startPos + new Vector3Int(-2, 0, 0));
         worldPath.Add(map.GetCellCenterWorld(startPos + new Vector3Int(-2, 0, 0)));
         tilePath.Add(startPos + new Vector3Int(-1, 0, 0));
         worldPath.Add(map.GetCellCenterWorld(startPos + new Vector3Int(-1, 0, 0)));
         curPos = startPos;
-        map.SetTile(startPos, curTileRight);
+        
+        
         confirmed = false;
     }
 }

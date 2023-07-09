@@ -57,8 +57,15 @@ public class TowerGen : MonoBehaviour
     public void Generate()
     {
         // repeats to generate each entity
+        int loopCounter = 0;
         for (int i = 0; i < maxScrap; i++)
         {
+            loopCounter++;
+            //break out of the loop if it becomes infinite
+            if(loopCounter > 150)
+            {
+                break;
+            }
             // a list that stores all possible tiles that entities can spawn at, by world position
             tileWorldLocations = new List<Vector3>();
 

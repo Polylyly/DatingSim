@@ -2755,7 +2755,7 @@ MonoBehaviour:
   arrowThreshold: 3
   laserThreshold: 2
   sniperThreshold: 3
-  rerollChance: 70
+  rerollChance: 100
   arrowTower: {fileID: 631569849157507190, guid: 3bf71c6dce76a904798b81e180e6abf0, type: 3}
   laserTower: {fileID: 856887618205527210, guid: dd39aa49baac693489d2dc005aa72bd1, type: 3}
   mineTower: {fileID: 8411567862774258375, guid: 6c1bbfe17e3ae10498b920dcca2f24d6, type: 3}

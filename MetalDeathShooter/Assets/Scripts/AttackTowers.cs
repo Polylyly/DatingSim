@@ -17,6 +17,7 @@ public class AttackTowers : MonoBehaviour
             Colliding = true;
             follow.enabled = false;
             if (submarine && collision.gameObject.name == "CoreShip(Clone)") follow.enabled = true;
+            if (suicideBomber) GetComponent<AudioSource>().Play();
         }
     }
 

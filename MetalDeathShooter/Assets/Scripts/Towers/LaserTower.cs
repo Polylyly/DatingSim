@@ -50,8 +50,11 @@ public class LaserTower : MonoBehaviour
         {
             ableToFire = false;
             booly = false;
+            GetComponent<AudioSource>().Play();
             StartCoroutine(Fire());
         }
+
+        if (closestEnemy == null) distance = -1;
     }
 
     IEnumerator Fire()
@@ -66,6 +69,7 @@ public class LaserTower : MonoBehaviour
             currentLaser.transform.parent = transform;
             StartCoroutine(DestroyArrow(currentLaser));
         }
+        else booly = true;
     }
 
     IEnumerator DestroyArrow(GameObject currentLaser)

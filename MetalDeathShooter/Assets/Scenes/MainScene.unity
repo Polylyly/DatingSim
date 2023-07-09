@@ -1554,6 +1554,7 @@ MonoBehaviour:
   troopSpawner: {fileID: 609129219}
   moneyManager: {fileID: 925913522}
   waveCompleteScreen: {fileID: 205504692}
+  text: {fileID: 1146337339}
   coreShip: {fileID: 6847158055651467222, guid: a7fbbbc71b817df43ae65c612210cb32, type: 3}
   coreShipPos: {x: 8, y: 1, z: 0}
 --- !u!4 &1105825465

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class GameManager : MonoBehaviour
     public GameObject troopSpawner;
     public MoneyManager moneyManager;
     public Image waveCompleteScreen;
+    public TextMeshProUGUI text;
     public GameObject coreShip;
     public Vector3 coreShipPos;
+    private int waveCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +60,12 @@ public class GameManager : MonoBehaviour
         GameObject cs = Instantiate(coreShip, coreShipPos, Quaternion.identity);
         // run onWaveComplete when the core ship is destroyed
         cs.GetComponent<TowerHealth>().onDestroy += () => OnWaveComplete();
+
+        // increment waveCount
+
+        waveCount++;
+        text.text = "Wave " + waveCount + " Complete!";
+
     }
     void OnPathConfirmed()
     {

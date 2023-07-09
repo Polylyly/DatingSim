@@ -72,7 +72,6 @@ public class MineTowerBehavior : MonoBehaviour
             
             timer += Time.deltaTime;
             float time = Mathf.InverseLerp(0f, duration, timer);
-            Debug.Log(time);
             float x = Mathf.Lerp(initScale.x, finalScale.x, time);
             transform.localScale = new Vector3(x, x, x);
             float r = Mathf.Lerp(initColor.r, finalColor.r, time);

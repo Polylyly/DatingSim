@@ -100,8 +100,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  armTime: 3
-  scaleInTime: 2
+  armTime: 2.8
+  scaleInTime: 0.7
   explosion: {fileID: 3530136011063960095, guid: b08acc935194e284289e9365039cebe2, type: 3}
 --- !u!58 &8411567862774258371
 CircleCollider2D:

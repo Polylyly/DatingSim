@@ -74,7 +74,7 @@ public class TowerGen : MonoBehaviour
 
             foreach (Vector3 pos in path.worldPath)
             {
-                float newDis = Vector2.Distance(tileWorldLocations[itemIndex], pos);
+                float newDis = Vector2.Distance(tileWorldLocations[itemIndex], ((Vector2) pos + new Vector2(-0.5f, -0.5f))); //the addition here is a minor adjustment to correct for offset between the center of a tile and of a tower
                 if (distance == -1 || newDis < distance)
                 {
                     distance = newDis;

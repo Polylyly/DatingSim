@@ -82,10 +82,7 @@ public class PathBehavior : MonoBehaviour
             {
                 // if the path has not reached the end pos, do not confirm it
                 if (curPos != endPos) return;
-                // set the end of the path to a regular path tile to indicate it can no longer be moved
-                map.SetTile(curPos, FindTile(new Vector3Int(1, 0, 0)));
-                confirmed = true;
-                onPathConfirmed();
+                ConfirmPath();
             }
             else
             {
@@ -94,6 +91,24 @@ public class PathBehavior : MonoBehaviour
         }
     }
 
+    public void ConfirmPath()
+    {
+        // set the end of the path to a regular path tile to indicate it can no longer be moved
+        map.SetTile(curPos, FindTile(new Vector3Int(1, 0, 0)));
+
+        //add the three ending tiles
+        tilePath.Add(curPos);
+        worldPath.Add(map.GetCellCenterWorld(curPos));
+        Vector3Int nextPos = curPos + new Vector3Int(1, 0, 0);
+        tilePath.Add(nextPos);
+        worldPath.Add(map.GetCellCenterWorld(nextPos));
+        nextPos += new Vector3Int(1, 0, 0);
+        tilePath.Add(nextPos);
+        worldPath.Add(map.GetCellCenterWorld(nextPos));
+
+        confirmed = true;
+        onPathConfirmed();
+    }
     // this function moves the very end of the path
     // amount is a vector3 used to pass a direction to move in
     private void moveCurTile(Vector3Int amount)
@@ -231,6 +246,11 @@ public class PathBehavior : MonoBehaviour
     public void ResetPath()
     {
         map.FloodFill(startPos, normalTile);
+        //add the starting tiles
+        tilePath.Add(startPos + new Vector3Int(-2, 0, 0));
+        worldPath.Add(map.GetCellCenterWorld(startPos + new Vector3Int(-2, 0, 0)));
+        tilePath.Add(startPos + new Vector3Int(-1, 0, 0));
+        worldPath.Add(map.GetCellCenterWorld(startPos + new Vector3Int(-1, 0, 0)));
         curPos = startPos;
         map.SetTile(startPos, curTileRight);
         confirmed = false;

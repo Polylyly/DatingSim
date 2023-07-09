@@ -53,9 +53,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   path: {fileID: 0}
   rb: {fileID: 4865339918064296242}
-  speed: 150
-  nextWaypointDistance: 0.3
+  speed: 300
+  nextWaypointDistance: 0.4
   moving: 0
+  backwards: 0
 --- !u!50 &4865339918064296242
 Rigidbody2D:
   serializedVersion: 4
@@ -115,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d90ff7adc637e74a842b9c70f82bc1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
   hitDelay: 1
   follow: {fileID: 4865339918064296241}
   suicideBomber: 1

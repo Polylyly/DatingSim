@@ -32,7 +32,7 @@ public class MoneyManager : MonoBehaviour
         text.text = "$" + money;
         foreach(Btn btn in buttons)
         {
-            if (money < btn.cost) btn.reference.GetComponent<Button>().interactable = false;
+            if (money < btn.cost) btn.reference.GetComponent<Button>().interactable = false; else btn.reference.GetComponent<Button>().interactable = true;
         }
     }
 

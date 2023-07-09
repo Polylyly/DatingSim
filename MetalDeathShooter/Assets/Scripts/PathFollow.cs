@@ -35,8 +35,6 @@ public class PathFollow : MonoBehaviour
             {
                 p.Add(path.worldPath[i]);
             }
-            p.Add(path.startPos + new Vector3Int(-1, 0, 0));
-            p.Add(path.startPos + new Vector3Int(-2, 0, 0));
         }
         else {
             // load path data from the pathmanager script

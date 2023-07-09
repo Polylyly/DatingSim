@@ -2643,6 +2643,7 @@ MonoBehaviour:
   - reference: {fileID: 292144408}
     cost: 150
   bankrupt: 0
+  gm: {fileID: 0}
 --- !u!114 &925913523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2835,11 +2836,17 @@ MonoBehaviour:
   startText: {fileID: 761295077}
   coreShip: {fileID: 6847158055651467222, guid: a7fbbbc71b817df43ae65c612210cb32, type: 3}
   coreShipPos: {x: 8, y: 1, z: 0}
+  waveCount: 0
   timer: -1
   towerGen: {fileID: 1258559014}
   waveData:
   - {fileID: 11400000, guid: 5f83432942a9a424d99208a52a54a453, type: 2}
   - {fileID: 11400000, guid: 314e938ed02e9b5498adacb5e1294d6a, type: 2}
+  - {fileID: 11400000, guid: 5792789f18d2c9442a462a9c6eb07811, type: 2}
+  - {fileID: 11400000, guid: dd6813feb2a61ff45800579befc2059d, type: 2}
+  - {fileID: 11400000, guid: ea93f6ef49ac4264997b6ea6404efd53, type: 2}
+  - {fileID: 11400000, guid: 2af373ca7317f0c48ac3fc41680dc24f, type: 2}
+  - {fileID: 11400000, guid: d66abf0744364cd49b5aeb900cdc6542, type: 2}
 --- !u!4 &1105825465
 Transform:
   m_ObjectHideFlags: 0

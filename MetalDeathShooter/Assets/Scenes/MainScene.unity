@@ -1371,7 +1371,7 @@ MonoBehaviour:
   tilemap: {fileID: 1323194307}
   tileWorldLocations: []
   towerLocations: []
-  maxScrap: 5
+  maxScrap: 1
   scrapMound: {fileID: 0}
   scanRadius: 0
   path: {fileID: 1361243939}

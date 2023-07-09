@@ -35,7 +35,6 @@ public class MineTowerBehavior : MonoBehaviour
 
     IEnumerator Explode()
     {
-        Debug.Log("started");
         float duration = armTime;
         float timer = 0f;
         while(timer < duration)
@@ -61,7 +60,6 @@ public class MineTowerBehavior : MonoBehaviour
     IEnumerator FadeIn(float duration)
     {
         SpriteRenderer renderer = GetComponent<SpriteRenderer>();
-        Debug.Log(renderer);
         Vector3 finalScale = transform.localScale;
         Vector3 initScale = new Vector3(0.01f, 0.01f, 0.01f);
         Color finalColor = Color.white;

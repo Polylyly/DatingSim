@@ -12,7 +12,7 @@ public class TowerGen : MonoBehaviour
     public static TowerGen instance;
 
     [Space]
-    private float distance = -1;
+
     public float scanRadius;
     Vector3 closestEnemy;
     public PathBehavior path;
@@ -42,8 +42,12 @@ public class TowerGen : MonoBehaviour
     //Called by another script (nonexistent) whenever scrap needs to be generated
     public void Generate()
     {
+        // a list that stores all possible tiles that entities can spawn at, by world position
         tileWorldLocations = new List<Vector3>();
 
+        // initialize tileWorldLocations based on whether the tilemap has a tile at that position
+        // spawnable positions are marked by placing invisible tiles
+        // every invisible tile is one spawnable location in tileWorldLocations
         foreach (var pos in tilemap.cellBounds.allPositionsWithin)
         {
             Vector3Int localPlace = new Vector3Int(pos.x, pos.y, pos.z);
@@ -54,16 +58,23 @@ public class TowerGen : MonoBehaviour
             }
         }
 
+        // ensures that the amount of generations we perform is not more than the maximum available locations and not negative
         maxScrap = Mathf.Clamp(maxScrap, 0, tileWorldLocations.Count);
-        Random.seed = System.DateTime.Now.Millisecond;
+
+        // repeats to generate each entity
         for (int i = 0; i < maxScrap; i++)
         {
+            // selects a random spawn positoin from the list of potential spawn positions
             int itemIndex = Random.Range(0, tileWorldLocations.Count);
 
-            float newDis = -2;
+            // finds the distance from the entity to the path
+            // by finding the minimum distance between the spawn location and the center of a path square
+            
+            float distance = -1;
+
             foreach (Vector3 pos in path.worldPath)
             {
-                newDis = Vector2.Distance(tileWorldLocations[itemIndex], pos);
+                float newDis = Vector2.Distance(tileWorldLocations[itemIndex], pos);
                 if (distance == -1 || newDis < distance)
                 {
                     distance = newDis;
@@ -71,27 +82,28 @@ public class TowerGen : MonoBehaviour
                 }
             }
 
+            Debug.Log(distance);
             // towerLocations.Add(tileWorldLocations[itemIndex] + new Vector3(0.5f, 0.5f, 0));
             tilemap.SetTile(tilemap.WorldToCell(tileWorldLocations[itemIndex]), null);
 
-            if(newDis <= wallDistance)
+            if(distance <= wallDistance)
             {
                 Instantiate(wallTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }
 
-            if (newDis > wallDistance && newDis <= mineDistance)
+            if (distance > wallDistance && distance <= mineDistance)
             {
                 int chance = Random.Range(1, 2);
                 if(chance == 1) Instantiate(mineTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
                 if (chance == 2) Instantiate(laserTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }
 
-            if (newDis > mineDistance && newDis <= arrowDistance)
+            if (distance > mineDistance && distance <= arrowDistance)
             {
                 Instantiate(arrowTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }
 
-            if (newDis > arrowDistance)
+            if (distance > arrowDistance)
             {
                 Instantiate(sniperTower, new Vector3(tileWorldLocations[itemIndex].x + 0.5f, tileWorldLocations[itemIndex].y + 0.5f, tileWorldLocations[itemIndex].z), Quaternion.identity);
             }

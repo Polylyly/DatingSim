@@ -12,17 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ce82b05f0de8408a17b7f69e18d69, type: 3}
   m_Name: Wave_9
   m_EditorClassIdentifier: 
-  levelStartText: Now that you've learned how to play, welcome to the real world
-    buckaroo.
+  levelStartText: I'll still talk to you sometimes.
   genNumber: 2
-  wallThreshold: 4
+  wallThreshold: 1
   mineThreshold: 1
   arrowThreshold: 1
-  laserThreshold: 0
-  sniperThreshold: 2
-  rerollChance: 100
-  startMoney: 500
-  spawnInitial: 1
+  laserThreshold: 1
+  sniperThreshold: 1
+  rerollChance: 70
+  startMoney: 600
+  spawnInitial: 0
+  spawnFinal: 0
+  ignorePlacementRules: 0
   allowBombers: 1
   allowDestroyers: 1
   allowSubs: 1

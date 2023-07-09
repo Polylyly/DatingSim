@@ -13,13 +13,18 @@ MonoBehaviour:
   m_Name: Wave_2
   m_EditorClassIdentifier: 
   levelStartText: Good work, matey! The enemy is placing arrow towers to defend their
-    boat. Place your path over them to break them down!
+    boat. Place your path over them, and send your ships to break them down!
   genNumber: 1
   wallThreshold: 0
   mineThreshold: 0
-  arrowThreshold: 2
+  arrowThreshold: 1
   laserThreshold: 0
   sniperThreshold: 0
   rerollChance: 100
   startMoney: 500
   spawnInitial: 1
+  spawnFinal: 0
+  ignorePlacementRules: 0
+  allowBombers: 0
+  allowDestroyers: 0
+  allowSubs: 0

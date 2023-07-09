@@ -17,12 +17,14 @@ MonoBehaviour:
   genNumber: 2
   wallThreshold: 1
   mineThreshold: 1
-  arrowThreshold: 1
+  arrowThreshold: 0
   laserThreshold: 0
   sniperThreshold: 2
   rerollChance: 100
   startMoney: 1200
   spawnInitial: 1
+  spawnFinal: 0
+  ignorePlacementRules: 0
   allowBombers: 1
   allowDestroyers: 1
   allowSubs: 1

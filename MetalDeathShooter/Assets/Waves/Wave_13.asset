@@ -10,21 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 630ce82b05f0de8408a17b7f69e18d69, type: 3}
-  m_Name: Wave_3
+  m_Name: Wave_13
   m_EditorClassIdentifier: 
-  levelStartText: The enemy is prepared to place walls in the way of your path! Run
-    them down with bomberships!
-  genNumber: 2
-  wallThreshold: 4
+  levelStartText: 
+  genNumber: 3
+  wallThreshold: 0
   mineThreshold: 0
-  arrowThreshold: 0
-  laserThreshold: 0
-  sniperThreshold: 0
-  rerollChance: 100
-  startMoney: 550
-  spawnInitial: 1
-  spawnFinal: 1
+  arrowThreshold: 1
+  laserThreshold: 2
+  sniperThreshold: 2
+  rerollChance: 70
+  startMoney: 1000
+  spawnInitial: 0
+  spawnFinal: 0
   ignorePlacementRules: 0
   allowBombers: 1
-  allowDestroyers: 0
-  allowSubs: 0
+  allowDestroyers: 1
+  allowSubs: 1

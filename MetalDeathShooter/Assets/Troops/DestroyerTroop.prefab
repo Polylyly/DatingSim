@@ -139,6 +139,7 @@ MonoBehaviour:
   speed: 130
   nextWaypointDistance: 0.3
   moving: 0
+  backwards: 0
 --- !u!50 &1480541959658949378
 Rigidbody2D:
   serializedVersion: 4
@@ -184,8 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f574bc38fd78a1a45844080b476fdba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 20
-  health: 20
+  maxHealth: 30
+  health: 30
 --- !u!114 &-8579498420254296868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,8 +200,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  hitDelay: 2
+  hitDelay: 1
   follow: {fileID: 1480541959658949377}
+  suicideBomber: 0
+  submarine: 0
 --- !u!61 &8490089709515102862
 BoxCollider2D:
   m_ObjectHideFlags: 0

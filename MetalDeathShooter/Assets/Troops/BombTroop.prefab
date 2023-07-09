@@ -117,9 +117,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  hitDelay: 1
+  hitDelay: 3
   follow: {fileID: 4865339918064296241}
   suicideBomber: 1
+  submarine: 0
 --- !u!61 &4462548963589255254
 BoxCollider2D:
   m_ObjectHideFlags: 0

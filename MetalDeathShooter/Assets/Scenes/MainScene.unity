@@ -613,7 +613,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 3a92624767898421780503a7a428c4de, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.066
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3031,6 +3031,7 @@ MonoBehaviour:
   towerLocations: []
   maxScrap: 1
   scrapMound: {fileID: 0}
+  tile: {fileID: 11400000, guid: 9d8ef12aadae7494aae54e110eefda27, type: 2}
   scanRadius: 0
   path: {fileID: 1361243939}
   wallThreshold: 2
@@ -5846,11 +5847,11 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {r: 5.5954e-41, g: 5.5954e-41, b: 5.5954e-41, a: 5.5954e-41}
   - m_RefCount: 258
-    m_Data: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 0}
+    m_Data: {r: 1, g: 0.005390823, b: 0.005390823, a: 0}
   - m_RefCount: 6
     m_Data: {r: 0.14049228, g: 0.22078468, b: 0.4716981, a: 0.44705883}
   - m_RefCount: 0
-    m_Data: {r: 3.9556e-41, g: 3.9556e-41, b: 3.9556e-41, a: 3.9556e-41}
+    m_Data: {r: 3.9699e-41, g: 3.9699e-41, b: 3.9699e-41, a: 3.9699e-41}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7438,9 +7439,9 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - m_RefCount: 0
-    m_Data: {r: 3.9567e-41, g: 3.9567e-41, b: 3.9567e-41, a: 3.9567e-41}
+    m_Data: {r: 3.971e-41, g: 3.971e-41, b: 3.971e-41, a: 3.971e-41}
   - m_RefCount: 144
-    m_Data: {r: 0.084905684, g: 0.084905684, b: 0.084905684, a: 0}
+    m_Data: {r: 1, g: 0.005390823, b: 0.005390823, a: 0}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}

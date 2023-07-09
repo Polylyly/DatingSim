@@ -10,7 +10,7 @@ public class TowerGen : MonoBehaviour
     public int maxScrap;
     public GameObject scrapMound;
     public static TowerGen instance;
-
+    public Tile tile;
     [Space]
 
     public float scanRadius;
@@ -255,6 +255,11 @@ public class TowerGen : MonoBehaviour
             return false;
         }
 
+    }
+
+    public void Place(Vector3 pos)
+    {
+        tilemap.SetTile(tilemap.WorldToCell(pos - new Vector3(0.5f, 0.5f, 0f)), tile);
     }
 
     

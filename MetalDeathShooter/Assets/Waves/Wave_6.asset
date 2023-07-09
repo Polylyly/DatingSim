@@ -14,15 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   levelStartText: The enemy's laser towers can easily take out big groups of ships.
     Be careful!
-  genNumber: 2
-  wallThreshold: 1
-  mineThreshold: 1
+  genNumber: 1
+  wallThreshold: 0
+  mineThreshold: 0
   arrowThreshold: 0
-  laserThreshold: 2
+  laserThreshold: 1
   sniperThreshold: 0
   rerollChance: 100
   startMoney: 600
   spawnInitial: 1
+  spawnFinal: 0
+  ignorePlacementRules: 0
   allowBombers: 1
   allowDestroyers: 1
   allowSubs: 1

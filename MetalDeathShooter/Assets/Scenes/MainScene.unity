@@ -880,10 +880,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -2849,6 +2849,24 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d66abf0744364cd49b5aeb900cdc6542, type: 2}
   - {fileID: 11400000, guid: 3de55ea07654de04387f60d1e475deed, type: 2}
   - {fileID: 11400000, guid: 9daa09729b0e4da46822bd242ba5bcec, type: 2}
+  - {fileID: 11400000, guid: d91fce6402eacf1439b2ffd18f812410, type: 2}
+  - {fileID: 11400000, guid: 833ef18dc358bab45b550ba03c56ee21, type: 2}
+  - {fileID: 11400000, guid: 6c355c60f84ae754f8c58b116b1134e4, type: 2}
+  - {fileID: 11400000, guid: 07dd1a8a61327534180eb6b89865c13c, type: 2}
+  - {fileID: 11400000, guid: 31ac07c46b64eb341b5ea745a07446cf, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
+  - {fileID: 11400000, guid: 3d8abdce0a2aa17498da59b3d63adf55, type: 2}
   tutorialComplete: 0
 --- !u!4 &1105825465
 Transform:

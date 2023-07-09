@@ -12,17 +12,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 630ce82b05f0de8408a17b7f69e18d69, type: 3}
   m_Name: Wave_8
   m_EditorClassIdentifier: 
-  levelStartText: Now that you've learned how to play, welcome to the real world
-    buckaroo.
+  levelStartText: Now that you've learned how to play, let's see how far you can
+    get. You'll fall back to this wave if you fail.
   genNumber: 2
-  wallThreshold: 4
-  mineThreshold: 1
-  arrowThreshold: 1
-  laserThreshold: 0
-  sniperThreshold: 2
-  rerollChance: 100
-  startMoney: 500
+  wallThreshold: 2
+  mineThreshold: 2
+  arrowThreshold: 2
+  laserThreshold: 1
+  sniperThreshold: 1
+  rerollChance: 70
+  startMoney: 1000
   spawnInitial: 1
+  spawnFinal: 0
+  ignorePlacementRules: 0
   allowBombers: 1
   allowDestroyers: 1
   allowSubs: 1

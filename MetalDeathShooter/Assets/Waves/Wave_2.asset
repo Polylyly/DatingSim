@@ -17,7 +17,7 @@ MonoBehaviour:
   genNumber: 1
   wallThreshold: 0
   mineThreshold: 0
-  arrowThreshold: 2
+  arrowThreshold: 1
   laserThreshold: 0
   sniperThreshold: 0
   rerollChance: 100

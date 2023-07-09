@@ -15,14 +15,16 @@ MonoBehaviour:
   levelStartText: The enemy is really stepping up their defenses! Use a destroyer
     to get through.
   genNumber: 3
-  wallThreshold: 1
-  mineThreshold: 1
-  arrowThreshold: 3
+  wallThreshold: 2
+  mineThreshold: 2
+  arrowThreshold: 2
   laserThreshold: 0
   sniperThreshold: 0
   rerollChance: 100
   startMoney: 1200
-  spawnInitial: 1
+  spawnInitial: 0
+  spawnFinal: 0
+  ignorePlacementRules: 0
   allowBombers: 1
   allowDestroyers: 1
   allowSubs: 1

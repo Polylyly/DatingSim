@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class TowerHealth : MonoBehaviour
 {
     public float maxHealth, currentHealth;
+    public Action onDestroy;
 
     // Start is called before the first frame update
     void Start()
@@ -17,7 +19,8 @@ public class TowerHealth : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            Destroy(gameObject);
+            this.onDestroy();
+            Destroy(this.gameObject);
         }
     }
 

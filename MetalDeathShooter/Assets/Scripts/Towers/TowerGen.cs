@@ -96,7 +96,6 @@ public class TowerGen : MonoBehaviour
                 }
             }
 
-            Debug.Log(distance);
             if (distance == -1) //there is no path found, so make tower placement fully random.
             {
                 int chance = Random.Range(0, 5);

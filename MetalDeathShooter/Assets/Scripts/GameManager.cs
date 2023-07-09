@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private PathBehavior pathBehavior;
-    private GameObject bar;
+    public PathBehavior pathBehavior;
+    public GameObject bar;
+    public GameObject troopSpawner;
     // Start is called before the first frame update
     void Start()
     {
         // link up the event to show the placeenemy bar when the path is confirmed
-        pathBehavior = GameObject.FindWithTag("PathManager").GetComponent<PathBehavior>();
         pathBehavior.onPathConfirmed += OnPathConfirmed;
 
         // set up a reference to and then disable the bar
-        bar = GameObject.Find("Bar");
         bar.SetActive(false);
-       
+
+        // run onWaveComplete when the core ship is destroyed
+        GameObject.Find("CoreShip").GetComponent<TowerHealth>().onDestroy += () => OnWaveComplete();
+
     }
 
     // Update is called once per frame
@@ -33,7 +35,16 @@ public class GameManager : MonoBehaviour
 
     void OnWaveComplete()
     {
+        // hide the troop spawning bar
         bar.SetActive(false);
+
+        // remove all active troops
+        foreach(Transform child in troopSpawner.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        // reset the path
         pathBehavior.ResetPath();
     }
 }

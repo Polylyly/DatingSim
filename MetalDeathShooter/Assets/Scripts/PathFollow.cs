@@ -53,7 +53,7 @@ public class PathFollow : MonoBehaviour
             if (currentWaypoint == p.Count - 1)
             {
                 pathCompleted = true;
-                if (backwards) Destroy(this.gameObject);
+                Destroy(this.gameObject);
                 return;
             }
             else

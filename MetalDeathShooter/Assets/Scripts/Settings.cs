@@ -40,12 +40,16 @@ public class Settings : MonoBehaviour
         musicVolumeText.SetText("Music: " + Mathf.RoundToInt(musicVolume.value * 100));
         sfxVolumeText.SetText("SFX: " + Mathf.RoundToInt(sfxVolume.value * 100));
     }
+
+    private void FixedUpdate()
+    {
+        PlayerPrefs.SetFloat("Music Volume", musicVolume.value);
+        PlayerPrefs.SetFloat("SFX Volume", sfxVolume.value);
+    }
+
     public void Back()
     {
         normalCanvas.SetActive(true);
         settingsCanvas.SetActive(false);
-
-        PlayerPrefs.SetFloat("Music Volume", musicVolume.value);
-        PlayerPrefs.SetFloat("SFX Volume", sfxVolume.value);
     }
 }

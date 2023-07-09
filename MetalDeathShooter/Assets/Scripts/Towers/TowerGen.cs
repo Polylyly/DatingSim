@@ -10,7 +10,7 @@ public class TowerGen : MonoBehaviour
     public int maxScrap;
     public GameObject scrapMound;
     public static TowerGen instance;
-
+    public Tile tile;
     [Space]
 
     public float scanRadius;
@@ -56,6 +56,11 @@ public class TowerGen : MonoBehaviour
     //Called by another script (nonexistent) whenever scrap needs to be generated
     public void Generate()
     {
+        wallPlacements = 0;
+        minePlacements = 0;
+        arrowPlacements = 0;
+        laserPlacements = 0;
+        sniperPlacements = 0;
         // repeats to generate each entity
         int loopCounter = 0;
         for (int i = 0; i < maxScrap; i++)
@@ -250,6 +255,11 @@ public class TowerGen : MonoBehaviour
             return false;
         }
 
+    }
+
+    public void Place(Vector3 pos)
+    {
+        tilemap.SetTile(tilemap.WorldToCell(pos - new Vector3(0.5f, 0.5f, 0f)), tile);
     }
 
     

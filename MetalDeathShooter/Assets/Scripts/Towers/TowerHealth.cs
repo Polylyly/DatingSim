@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.Tilemaps;
 
 public class TowerHealth : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class TowerHealth : MonoBehaviour
     public void Kill()
     {
         Destroy(this.gameObject);
+        GameObject.Find("AIPlacer").GetComponent<TowerGen>().Place(transform.position);
     }
     public void DamageTower(float damage)
     {

@@ -16,7 +16,7 @@ public class MoneyManager : MonoBehaviour
     public int money;
     public Btn[] buttons;
     public bool bankrupt = false;
-
+    public GameManager gm;
 
     private TextMeshProUGUI text;
 
@@ -45,6 +45,9 @@ public class MoneyManager : MonoBehaviour
                 bankrupt = false;
             }
         }
+        if (gm.waveData[gm.waveCount -1].allowBombers == false) buttons[1].reference.GetComponent<Button>().interactable = false;
+        if (gm.waveData[gm.waveCount -1].allowDestroyers == false) buttons[2].reference.GetComponent<Button>().interactable = false;
+        if (gm.waveData[gm.waveCount -1].allowSubs == false) buttons[3].reference.GetComponent<Button>().interactable = false;
     }
 
     public void AddMoney(int amount)

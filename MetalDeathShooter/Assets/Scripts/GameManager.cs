@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI startText;
     public GameObject coreShip;
     public Vector3 coreShipPos;
-    private int waveCount = 0;
+    public int waveCount = 0;
     public float timer = -1f;
     public TowerGen towerGen;
 
@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour
         startScreen.gameObject.SetActive(true);
         startText.text = data.levelStartText;
 
+        
+
         // spawn in initial towers
         if (data.spawnInitial)
         {
@@ -140,6 +142,11 @@ public class GameManager : MonoBehaviour
     {
         waveCount = 0;
         Destroy(coreShip);
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        foreach(GameObject tower in towers)
+        {
+            Destroy(tower);
+        }
         StartWave();
     }
 }
